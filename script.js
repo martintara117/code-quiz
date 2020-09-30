@@ -73,13 +73,17 @@ document
   .querySelector("main section:nth-of-type(4) button")
   .addEventListener("click", startQuiz);
 for (let button of answerButtons) {
+  //for-of loop (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of)
   button.addEventListener("click", handleAnswer);
 }
+
 //APPLICATION LOGIC
 function showHighScores() {
   //get highscores from localStorage
   let highscores = localStorage.getItem("highscores") || "";
-  let scores = highscores.split(",");
+  //process highscores string
+  //ex: ABC:97,FRW:85,OUY:99
+  let scores = highscores.split(","); //["ABC:97", "FRW:85", "OUY:99"]
   //sort highscores
   //display high scores
   let ol = document.querySelector("ol");
@@ -95,6 +99,7 @@ function showHighScores() {
   //show the high scores <section>
   document.querySelector("main").className = "highScore";
 }
+
 function startQuiz() {
   //set app variables
   numberOfCorrectAnswers = 0;
@@ -111,6 +116,7 @@ function startQuiz() {
 function startTimer() {
   timer = setInterval(timerTick, 1000);
 }
+
 function timerTick() {
   //will run once every second while timer is active
   //if timeRemaining is zero (or less)
@@ -129,6 +135,7 @@ function timerTick() {
     timeRemaining--;
   }
 }
+
 function nextQuestion() {
   let question = quiz[currentQuestionIndex]; //get the current question from quiz array (by index)
   questionSection.querySelector("h1").textContent = question.q; //put the q property into the h1
@@ -137,7 +144,11 @@ function nextQuestion() {
   }
   questionSection.querySelector("footer").className = ""; //empty "" hide the footer
 }
+
 function handleAnswer(e) {
+  //e is the event that came originally from the OS
+  //e.currentTarget is the actual html <button> that was clicked
+  //e.currentTarget.textContent is the text in that <button>
   //if the text in the clicked button matches the "correct" property of the current question...
   //	then the user answered correctly (otherwise, it's an incorrect answer)
   let userAnswer = e.currentTarget.textContent;
@@ -171,6 +182,7 @@ function handleAnswer(e) {
     endGame();
   }
 }
+
 function endGame() {
   var correctPercentage = (numberOfCorrectAnswers * 100) / quiz.length;
   //insert score into <p> of third section
@@ -179,4 +191,22 @@ function endGame() {
   ).textContent = `You scored ${correctPercentage}%!`;
   //change to finished <section>
   document.querySelector("main").className = "score";
+}
+
+function addToHighScore() {
+  //get initials
+  let initials = document
+    .querySelector("main section:nth-of-type(3) input")
+    .value.trim(); //trim() removes leading/trailing whitespace
+  if (initials.length <= 2) return; //not enough characters
+  initials = initials.slice(0, 3).toUpperCase(); //take only the first two characters, uppercase
+  //get percentage
+  let percentage = Math.floor((numberOfCorrectAnswers * 100) / quiz.length);
+  //save in localStorage
+  let highscores = localStorage.getItem("highscores") || "";
+  if (highscores.length) highscores += ",";
+  highscores += initials + ":" + percentage;
+  localStorage.setItem("highscores", highscores);
+  //go to high scores screen
+  showHighScores();
 }
