@@ -137,3 +137,37 @@ function nextQuestion() {
   }
   questionSection.querySelector("footer").className = ""; //empty "" hide the footer
 }
+function handleAnswer(e) {
+  //if the text in the clicked button matches the "correct" property of the current question...
+  //	then the user answered correctly (otherwise, it's an incorrect answer)
+  let userAnswer = e.currentTarget.textContent;
+  let correctAnswer = quiz[currentQuestionIndex].correct;
+  //right or wrong?
+  if (userAnswer === correctAnswer) {
+    //correct!
+    //add one to correct answer count
+    numberOfCorrectAnswers++;
+    //set footer text
+    questionSection.querySelector("footer").textContent = "Correct!";
+  } else {
+    //incorrect...
+    //subtract from timeRemaining
+    timeRemaining -= timePenalty;
+    //set footer text
+    questionSection.querySelector("footer").textContent = "Wrong :(";
+  }
+  //show footer
+  questionSection.querySelector("footer").className = "answered";
+  //add one to our question index
+  currentQuestionIndex++; //move to next question
+  //is there a next question?
+  if (quiz[currentQuestionIndex]) {
+    //if another question exists...
+    //delay, then load next question
+    setTimeout(nextQuestion, delayBetweenQuestions);
+  } else {
+    //no more questions...
+    timeRemaining = 0;
+    endGame();
+  }
+}
