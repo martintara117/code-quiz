@@ -171,3 +171,12 @@ function handleAnswer(e) {
     endGame();
   }
 }
+function endGame() {
+  var correctPercentage = (numberOfCorrectAnswers * 100) / quiz.length;
+  //insert score into <p> of third section
+  document.querySelector(
+    "main section:nth-of-type(3) p"
+  ).textContent = `You scored ${correctPercentage}%!`;
+  //change to finished <section>
+  document.querySelector("main").className = "score";
+}
