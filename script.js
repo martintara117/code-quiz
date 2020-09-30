@@ -73,7 +73,25 @@ document
   .querySelector("main section:nth-of-type(4) button")
   .addEventListener("click", startQuiz);
 for (let button of answerButtons) {
-  //for-of loop (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of)
   button.addEventListener("click", handleAnswer);
 }
 //APPLICATION LOGIC
+function showHighScores() {
+  //get highscores from localStorage
+  let highscores = localStorage.getItem("highscores") || "";
+  let scores = highscores.split(",");
+  //sort highscores
+  //display high scores
+  let ol = document.querySelector("ol");
+  if (!scores.length) {
+    ol.innerHTML = "<li>No high scores yet.</li>";
+  } else {
+    let items = "";
+    for (let score of scores) {
+      items += "<li>" + score + "</li>";
+    }
+    ol.innerHTML = items;
+  }
+  //show the high scores <section>
+  document.querySelector("main").className = "highScore";
+}
