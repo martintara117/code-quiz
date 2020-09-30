@@ -95,3 +95,15 @@ function showHighScores() {
   //show the high scores <section>
   document.querySelector("main").className = "highScore";
 }
+function startQuiz() {
+    //set app variables
+    numberOfCorrectAnswers = 0;
+    currentQuestionIndex = 0;
+    timeRemaining = maxTime;
+    //start timer
+    startTimer();
+    //put our question into the HTML <section>
+    nextQuestion();
+    //show the question <section>
+    document.querySelector("main").className = "question";
+  }
