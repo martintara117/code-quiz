@@ -8,19 +8,53 @@
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title></title>
+    <title>code-quiz</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="" />
+    <link />
+    <link rel="stylesheet" href="style.css" />
+    <script defer src="script.js"></script>
   </head>
-  <body>
-    <!--[if lt IE 7]>
-      <p class="browsehappy">
-        You are using an <strong>outdated</strong> browser. Please
-        <a href="#">upgrade your browser</a> to improve your experience.
-      </p>
-    <![endif]-->
 
-    <script src="" async defer></script>
+  <body>
+    <header>
+      <button class="highscore-headerbtn">High Scores</button>
+      <button class="timer">Time Remaining:</button>
+    </header>
+    <main class="intro">
+      <section>
+        <h1>Coding Quiz Challenge</h1>
+        <p>
+          Try to answer the following code-related questions within 75 seconds.
+          Keep in mind that incorrect answers will penalize your time by ten
+          seconds! Good luck!
+        </p>
+        <button class="takequizBtn">Take Quiz</button>
+      </section>
+      <section>
+        <h1>Question goes here</h1>
+        <button>Take Quiz</button>
+        <button>Take Quiz</button>
+        <button>Take Quiz</button>
+        <button>Take Quiz</button>
+        <footer>Right/wrong?</footer>
+      </section>
+      <section>
+        <h1>All Done!</h1>
+        <p>You scored _____/______.</p>
+        <p class="initials-here">
+          Initials here:
+          <input class="initials" type="text" placeholder="TAM" />
+        </p>
+        <button class="add-initials">add your high score!</button>
+      </section>
+      <section>
+        <h1>High Scores</h1>
+        <ol class="w3-ul">
+          <li class="w3-padding-small">" "</li>
+        </ol>
+        <button>Take Quiz</button>
+      </section>
+    </main>
   </body>
 </html>
