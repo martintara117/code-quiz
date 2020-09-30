@@ -57,4 +57,23 @@ var timeOutput = document.querySelector(".timer"); //<button class="timer">Time 
 
 //SET EVENT LISTENERS/HANDLERS
 //header button
+document
+  .querySelector("header button")
+  .addEventListener("click", showHighScores);
+//start game screen
+document
+  .querySelector("main section:nth-of-type(1) button")
+  .addEventListener("click", startQuiz);
+//game over screen
+document
+  .querySelector("main section:nth-of-type(3) button")
+  .addEventListener("click", addToHighScore);
+//high score screen
+document
+  .querySelector("main section:nth-of-type(4) button")
+  .addEventListener("click", startQuiz);
+for (let button of answerButtons) {
+  //for-of loop (https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of)
+  button.addEventListener("click", handleAnswer);
+}
 //APPLICATION LOGIC
