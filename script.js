@@ -129,3 +129,11 @@ function timerTick() {
     timeRemaining--;
   }
 }
+function nextQuestion() {
+  let question = quiz[currentQuestionIndex]; //get the current question from quiz array (by index)
+  questionSection.querySelector("h1").textContent = question.q; //put the q property into the h1
+  for (let i = 0; i < answerButtons.length; i++) {
+    answerButtons[i].textContent = question.a[i]; //put each possible answer into the buttons
+  }
+  questionSection.querySelector("footer").className = ""; //empty "" hide the footer
+}
