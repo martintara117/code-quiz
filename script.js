@@ -96,14 +96,36 @@ function showHighScores() {
   document.querySelector("main").className = "highScore";
 }
 function startQuiz() {
-    //set app variables
-    numberOfCorrectAnswers = 0;
-    currentQuestionIndex = 0;
-    timeRemaining = maxTime;
-    //start timer
-    startTimer();
-    //put our question into the HTML <section>
-    nextQuestion();
-    //show the question <section>
-    document.querySelector("main").className = "question";
+  //set app variables
+  numberOfCorrectAnswers = 0;
+  currentQuestionIndex = 0;
+  timeRemaining = maxTime;
+  //start timer
+  startTimer();
+  //put our question into the HTML <section>
+  nextQuestion();
+  //show the question <section>
+  document.querySelector("main").className = "question";
+}
+
+function startTimer() {
+  timer = setInterval(timerTick, 1000);
+}
+function timerTick() {
+  //will run once every second while timer is active
+  //if timeRemaining is zero (or less)
+  if (timeRemaining <= 0) {
+    timeRemaining = 0;
   }
+  //show timeRemaining in the header
+  timeOutput.textContent = "Time Remaining: " + timeRemaining + " seconds";
+  //	end the quiz if timeRemaining is zero and stop the timer
+  if (timeRemaining === 0) {
+    clearInterval(timer);
+    endGame();
+  }
+  //subtract one from timeRemaining
+  else {
+    timeRemaining--;
+  }
+}
