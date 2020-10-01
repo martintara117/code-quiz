@@ -84,6 +84,12 @@ li {
   border-bottom: 1px solid rgb(116, 148, 130);
   color: tomato;
 }
+
+.take-quiz-again {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
 footer {
   display: none;
   margin-top: 15px;
