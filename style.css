@@ -75,11 +75,6 @@ section button:hover {
   margin-right: auto;
 }
 
-.score-log {
-  background-color: rgb(224, 176, 224);
-  margin: 5px;
-}
-
 footer {
   display: none;
   margin-top: 15px;
