@@ -60,13 +60,16 @@ section button:hover {
 }
 .initials-here {
   float: center;
+  font-family: "Roboto Mono", monospace;
+  font-weight: bold;
 }
 .initials {
   float: center;
-}
-
-.initials:hover {
-  background-color: rgb(255, 255, 181);
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+  border: 2px solid rgb(116, 148, 130);
+  border-radius: 4px;
 }
 
 .add-initials {
