@@ -2,7 +2,7 @@
 
 ## Description
 
-The Coding Quiz challenged us to create our html, css and js from scratch, with our only guidelines being the Acceptance Criteria and an example of how the final result should look/function.
+The Coding Quiz challenged us to create our html, css and js from scratch, with our only guidelines being the Acceptance Criteria and an example of how the final result should look/function. The result is a dynamic page with and intro, timer, questions/answers, and high scores.
 
 The quiz begins with a start page explaining how the quiz works. Users are made aware they only have 75 seconds to take the quiz and that for every question missed, 10 seconds will be taken from their time.
 
